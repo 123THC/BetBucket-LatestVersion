@@ -1,0 +1,20 @@
+<button class="goBackButton" ui-sref="profile.events({ eventType: betfairShow.eventType })">Go back to {{ betfairShow.eventType }} events</button>
+
+<ul class="showEvents">
+  <li ng-click="betfairShow.getMarketOdds(market.marketId); betfairShow.selectMarket(market); usersShow.selectMarket(market); usersShow.newEvent.marketName = market.marketName; usersShow.newEvent.marketId = market.marketId" ng-repeat="market in betfairShow.markets" ng-class="{'selected': market.selected }">
+    <h3>{{ market.marketName }} <span ng-if="!market.totalMatched"> - No odds Available</span></h3>
+  </li>
+</ul>
+
+<ul class="showOdds">
+  <li ng-repeat="runner in betfairShow.specificMarket.runners" ng-if="runner.lastPriceTraded">
+    <p> {{ betfairShow.runnerNames[$index] }} - Last Price Traded: {{ runner.lastPriceTraded }} </p>
+
+    <button ng-click="usersShow.addToAccumulator(runner, $index, betfairShow.eventType); usersShow.eventButton = true">Add To Accumulator
+    </button>
+  </li>
+
+  <li ng-repeat="runner in betfairShow.specificMarket.runners" ng-if="!runner.lastPriceTraded" >
+    <p> {{ betfairShow.runnerNames[$index] }} - No odds currently available</p>
+  </li>
+</ul>
