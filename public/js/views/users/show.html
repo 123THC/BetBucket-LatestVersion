@@ -35,7 +35,7 @@
   <div>
     <ul ng-if="!usersShow.currentAccumulator">
       <li>To begin choose a name for your accumulator in the top right hand corner</li>
-      <li>Click "Create New Accumulator"</li>
+      <li>Click "Create New Accumulator" and then select your chosen accumulator</li>
       <li>Then click "Add Event"</li>
       <li>Choose which events to add to your accumulator</li>
       <li>Watch the graph update in real time and bet when the moment is just right!</li>
@@ -70,7 +70,7 @@
 
 <br>
 
-<button class="eventButton" ng-click="usersShow.eventButton = !usersShow.eventButton">
+<button ng-if="usersShow.currentAccumulator" class="eventButton" ng-click="usersShow.eventButton = !usersShow.eventButton">
   <span>
     Add Event
   </span>
