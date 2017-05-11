@@ -1,7 +1,7 @@
 $black: #0e1922;
 $slategray: #001727;
 $grey: #001727;
-$green: rgb(13,170,176);
+$green: rgb(0, 132, 139);
 $pink: #d72b71;
 $lightgreen: rgb(13,170,176);
 $lightgrey: #cccccc;
@@ -154,7 +154,8 @@ form {
     background: ghostwhite;
     height: 30px;
     &:focus {
-      opacity: 0.5;
+      opacity: 1;
+      background: ghostwhite;
     }
   }
 }
@@ -182,25 +183,43 @@ h1.user-profile {
 // Accumlator nav bar side-section
 
 section.profile-accy-nav {
+  position: relative;
   //edits buttons!!! --
-  button.editForm {
-  font-weight: 600;
-  color: white;
-  text-transform: uppercase;
-  background: $lightgrey;
-    &:hover {
-      background: $lightergrey;
+  div.edit {
+    button.editForm {
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      background: $lightgrey;
+      &.editButton {
+        text-align: center;
+        position: absolute;
+        right: 0;
+        left: 75%;
+        margin-top: -51px;
+        line-height: 51px;
+        height: 51px;
+        z-index: 100;
+        width: 25%;
+      }
+      // position: absolute;
+      // width: 25%;
+      &:hover {
+        background: $lightergrey;
+      }
     }
   }
   form.newForm, form.editForm{
     input {
-      text-align: center;
+      position: absolute;
     }
     button {
+    margin-top: 30px;
+    width: 100%;
     font-weight: 600;
     text-transform: uppercase;
     color: white;
-    background: $grey;
+    background: $lightgrey;
       &:hover {
         background: $lightergrey;
       }
@@ -242,6 +261,8 @@ section.profile-accy-nav {
         color: inherit;
         width: 100%;
         text-align: center;
+        padding-right: 25%;
+        padding-left: 25%;
         &:hover {
           background: $green;
         }
@@ -250,7 +271,22 @@ section.profile-accy-nav {
           font-size: 11px;
             text-transform: uppercase;
         }
+      }
 
+      &.selected {
+        a {
+          padding-left: 5%;
+        }
+        background-color: $green;
+        div.edit {
+          display: block;
+          button {
+            display: inline-block;
+            float: right;
+            height: 30px;
+            width: 100%;
+          }
+        }
       }
     }
     // div.edit {
@@ -273,7 +309,7 @@ section.profile-accy-nav {
       padding-left: 10px;
       width: 100%;
       &:focus {
-        background: gold;
+        background: ghostwhite;
       }
     }
     button {
@@ -293,8 +329,6 @@ section.profile-graphs li {
   }
 }
 
-
-
 // graph styles -------------------------------------
 
 section.profile-graphs {
@@ -303,7 +337,9 @@ section.profile-graphs {
   // border: 2px solid black;
   display: block;
   margin-right: 1%;
-  min-height: 300px;
+  // min-height: 350px;
+  height: 35vw;
+  // height: 350px;
   padding: 15px;
   div.user-animation {
     margin-top: 0px;
@@ -313,13 +349,28 @@ section.profile-graphs {
     left: 0;
     right: 0;
     z-index: -1;
-    height: 450px;
+    height: 100%;
     overflow: hidden;
     #line {
 
       // height: 90%;
       // width: 90%;
       overflow: hidden;
+    }
+  }
+  p {
+    padding-left: 5%;
+    color: rgba(142,142,142,0.4);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 20px;
+    span {
+      margin-left: -20px;
+      display: block;
+      margin-top: 4%;
+      font-size: 14px;
+      margin-bottom: 15px;
     }
   }
 }
@@ -372,12 +423,21 @@ div.message {
 }
 //  input select sections ------------------------- ---------------
 
+div.event-type-menu {
+  background: #f2f5f7;
+  color: $pink;
+  margin-bottom: 5px;
+  line-height: 40px;
+  font-weight: 600;
+  padding-left: 2%;
+}
+
 section.profile-input-selectboxes {
   width: 100%;
   height: 150px;
   margin: 30px 0;
   text-align: center;
-  background: $grey;
+  background: #f2f5f7;
   select {
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
@@ -386,6 +446,8 @@ section.profile-input-selectboxes {
     margin: 30px 0;
     height: 30px;
     width: 50%;
+    background: $grey;
+    color: white;
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
@@ -416,14 +478,52 @@ section.profile-select-event {
 }
 
 button.eventButton {
+  margin-top: 30px;
+  position: relative;
+  display: block;
+  line-height: 40px;
   background: $nGreen;
   color:white;
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  padding-right: 60px;
+  span {
+    display: inline-block;
+    line-height: 40px;
+    height: 40px;
+    margin-right: 20px;
+  }
   &:hover {
     color: white;
     background: $nlightGreen;
+    div {
+      &:after {
+        border-left: 10px solid $nlightGreen;
+      }
+    }
+  }
+  div {
+    // margin-top: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid white;
+    &:after {
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid $nGreen;
+      left: -14px;
+      position: absolute;
+      top: -10px;
+      content: '';
+    }
   }
 }
 
@@ -497,6 +597,14 @@ ul.profile-tracked-accumulator {
       }
     }
   }
+  li.menu {
+    p {
+      background: #f2f5f7;
+      color: $pink;
+    }
+    margin-bottom: 5px;
+    background: #f2f5f7;
+  }
 }
 
 
@@ -509,37 +617,21 @@ ul.profile-tracked-accumulator {
 
 div.login-animation {
   background: $nBlack;
-  // background: blue;
   position: absolute;
-  top: 0;
+  top: 65px;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: -1;
-  // height: 95vh;
-  overflow: visible;
-  // margin-top: 5vh;
+  overflow: hidden;
   #line {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // bottom: 0;
-    // height: calc(100vh - 65px);
-    margin-top: 65px;
-    width: 100%;
+    display: block;
+    position: relative;
     height: 100%;
-    // max-width: 100%;
-    // background: red;
-    //overflow: hidden;
+    width: 100%;
+    overflow: hidden;
   }
 }
-
-// h1.login {
-//   margin-top: 100px;
-//   color: white;
-//   font-size: 26px;
-// }
 
 form.login, form.register {
   // position: relative;
@@ -558,7 +650,6 @@ form.login, form.register {
   }
   input {
     font-family: 'Open Sans', sans-serif;
-    text-transform: uppercase;
     line-height: 35px;
     height: 35px;
     font-size: 12px;
@@ -608,9 +699,10 @@ form.login, form.register {
 
 
 button.goBackButton {
-  background: $green;
+  line-height: 40px;
+  background: $nGreen;
   color: white;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   font-weight: 600;
   &:hover {
@@ -635,7 +727,7 @@ ul.showEvents {
     }
     ul {
       li {
-          line-height: 35px;
+        line-height: 35px;
       }
     }
   }
@@ -689,9 +781,8 @@ ul.showOdds {
 
 footer {
   background-color: $grey;
-  padding-bottom: 100px;
-  margin-top: 50px;
-  line-height: 100px;
+  margin: 50px 0;
+  line-height: 200px;
   text-align: center;
   color: white;
   // position: absolute;
@@ -702,19 +793,14 @@ footer {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 600;
+  p {
+    background: -webkit-linear-gradient(left,#35d6d1 30%,#ecff28 70%) no-repeat;
+    -webkit-background-clip: text;
+    color: #b4f25f;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+  }
 }
-
-
-// @font-face {
-//     font-family: Gilroy-ExtraBold;
-//     src: url("fonts/Gilroy-ExtraBold.otf") format("opentype");
-// }
-//
-// @font-face {
-//     font-family: Gilroy-Light;
-//     src: url("fonts/Gilroy-Light.otf") format("opentype");
-// }
-
 
 @font-face {
     font-family: 'gilroyextrabold';

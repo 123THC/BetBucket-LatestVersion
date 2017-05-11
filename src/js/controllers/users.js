@@ -40,6 +40,7 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function chooseAccumulator(accy) {
     if(accy) {
+      if(accy !== vm.currentAccumulator) vm.editToggleBoolean = false;
       vm.currentAccumulator = accy;
       vm.currentAccumulator.events.sort((a, b) => a.runnerId - b.runnerId);
       vm.data = [];
@@ -85,6 +86,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
         const index = vm.user.accumulators.indexOf(accumulator);
         vm.user.accumulators.splice(index, 1);
         vm.currentAccumulator = false;
+        editToggle();
+        vm.data = [];
       });
   }
 
@@ -109,11 +112,8 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   vm.editToggleBoolean =  true;
 
   function editToggle(){
-    if(vm.editToggleBoolean === true) {
-      vm.editToggleBoolean = false;
-    } else {
-      vm.editToggleBoolean = true;
-    }
+    if(vm.editToggleBoolean === true) vm.editToggleBoolean = false;
+    else vm.editToggleBoolean = true;
   }
 
   function deleteEvent(event) {
@@ -133,8 +133,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
   }
 
   function displayTrackedEvents(accumulatorId) {
-    const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
-    $http
+    if(vm.currentAccumulator.events && vm.currentAccumulator.events.length > 0) {
+      const runnerIds = vm.currentAccumulator.events.map((ev) => parseInt(ev.runnerId));
+      $http
       .get(`/api/accumulators/${accumulatorId}`)
       .then((response) => {
         vm.runners = response.data.reduce((runners, data) => {
@@ -159,10 +160,12 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
         t = setTimeout(() => {
           displayTrackedEvents(accumulatorId);
-          updateGraph(i);
+          if(vm.currentAccumulator.events) updateGraph(i);
           i++;
         }, 1000);
       });
+
+    }
   }
 
   function createLinesOnGraph(accy) {
@@ -174,10 +177,9 @@ function UsersShowCtrl($rootScope, $state, $auth, $http, Accumulator, Event, $sc
 
   function updateGraph(i) {
     const time = moment().format('mm:ss');
-
     if(i < 20) {
       for(let p = 0; p < vm.data.length; p++) {
-        vm.data[p][i] = vm.runners[p].lastPriceTraded;
+        if(vm.runners[p]) vm.data[p][i] = vm.runners[p].lastPriceTraded;
       }
       vm.labels[i] = time;
     } else {

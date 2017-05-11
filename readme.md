@@ -14,13 +14,21 @@ The app is designed to enable a user to obtain information on sporting and 'spec
 The accumulator can hold any number of events, and the data will automatically update a live graph which tracks the odds.
 
   [Link to App](https://bet-bucket.herokuapp.com/)
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> fe39e4602b37df4f9554b116539499c28272a9e0
 ![](./src/images/BetBucketHome.png)
 
 
 #### Home Screen
 
+<<<<<<< HEAD
 The landing page is simple, showing a route to login and a brief description of the app.
+=======
+The landing page is simple, showing a route to login and a brief description of the app. 
+>>>>>>> fe39e4602b37df4f9554b116539499c28272a9e0
 
 1. Create accumulator
 2. Add events
@@ -96,7 +104,11 @@ The following tools are used to build the site.
 * AngularJS
 * SCSS
 * Charts.js
+<<<<<<< HEAD
 * MongoDB
+=======
+* Mongo DB
+>>>>>>> fe39e4602b37df4f9554b116539499c28272a9e0
 
 Dependencies:
 
@@ -116,7 +128,11 @@ In addition, the following planning and management tools were used:
 
 **Trello for project management**
 
+<<<<<<< HEAD
 Trello allowed for detailed planning and allocation of tasks.  Bi-daily updates were made to progress activity and ensure that all outstanding were completed by an agreed time.
+=======
+Trello allowed for detailed planning and allocation of tasks.  Bi-daily updates were made to progress activity and ensure that all outstanding were completed by an agreed time. 
+>>>>>>> fe39e4602b37df4f9554b116539499c28272a9e0
 
 Trello was a key component of our project management capability.
 
@@ -132,15 +148,26 @@ Balsamiq helped us to plan out the views correctly, along with the flow.  While 
 
 The greatest challenges were:
 
+<<<<<<< HEAD
 1. Accessing the API as initially, acquiring and then storing the session token proved problematic but we stored it in a global variable which allowed us to send it with each of our API requests
 2. Making sense of the API documentation which was complicated and assumed higher than a beginners knowledge of programming and gambling. Although this was stressful at times, it was very worthwhile as I'm sure this won't be the last time we wrestle with unclear documentation.
 3. Identifying the correct filters and data sets to make the data meaningful to a user.
 4. Making numerous requests to the Betfair API whilst storing ID's from previously made requests in order to drill down through the data and eventually get the odds for specific bets.
+=======
+1. Accessing the API as initially, the session tokens kept expiring
+2. Making sense of the API documentation which was complicated and assumed higher then a beginners knowledge of programming and gambling.
+3. Identifying the correct filters and data sets to make the data meaningful to a user.
+4. Using the data!
+>>>>>>> fe39e4602b37df4f9554b116539499c28272a9e0
 
 Future upgrades:
 
 1. Search and user filtering capability
+<<<<<<< HEAD
 2. Links to placing bets directly to the bookmakers website. The reason this wasn't implemented was because it was linked to a personal Betfair account and therefore all bets made would be real and through one of our accounts. There is an option for a business API key but this cost £200 and seemed unnecessary for demonstration purposes.
+=======
+2. Links to placing bets directly to the bookmakers website.
+>>>>>>> fe39e4602b37df4f9554b116539499c28272a9e0
 
 
 #### Wins
