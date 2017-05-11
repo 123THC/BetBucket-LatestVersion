@@ -8,7 +8,7 @@
     <div ng-message="required">A name is required.</div>
   </div>
   <form class="newForm" name="usersShow.newAccyForm" ng-submit="usersShow.createAccumulator()" novalidate>
-    <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" required>
+    <input type="text" value="My Accumulator" name="name" ng-model="usersShow.newAccumulator.name" placeholder="Choose a name for your accumulator..." required>
     <button>Create New Accumulator</button>
   </form>
   <ul>
@@ -35,6 +35,13 @@
 </section>
 <section class="profile-graphs">
   <div>
+    <ul ng-if="!usersShow.currentAccumulator">
+      <li>To begin choose a name for your accumulator in the top right hand corner</li>
+      <li>Click "Create New Accumulator"</li>
+      <li>Then click "Add Event"</li>
+      <li>Choose which events to add to your accumulator</li>
+      <li>Watch the graph update in real time and bet when the moment is just right!</li>
+    </ul>
     <canvas id="line" class="chart chart-line" chart-data="usersShow.data" chart-labels="usersShow.labels" chart-options="usersShow.options" chart-colors="usersShow.colors" chart-dataset-override="usersShow.override">
     </canvas>
   </div>
