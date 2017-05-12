@@ -23,12 +23,6 @@ The accumulator can hold any number of events, and the data will automatically u
 
 The landing page is simple, showing a route to login and a brief description of the app.
 
-1. Create accumulator
-2. Add events
-3. Track odds
-
-![](./src/images/LoginPage2.png)
-
 From this page, users must login and authenticate by registering through the app directly.
 
 #### Profile page
@@ -51,7 +45,7 @@ Event Types available are:
 * Boxing
 * Horse
 * Motor
-* ESports
+* E-Sports
 * Special
 
 ![](./src/images/Acc_searchFunction.png)
